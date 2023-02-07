@@ -1,23 +1,20 @@
-public class Hero {
+package org.example;
+
+public abstract class Hero {
     private String name;
     private int level;
     private int damage;
     private HeroAttribute levelAttribute;
     private Item equipment;
-    private validWeaponTypes;
-    private validArmorTypes;
+    private Weapons.WeaponType validWeaponTypes;
+    private Armor.ArmorType validArmorTypes;
 
     //Constructor
     public Hero(String name) {
         levelAttribute = new HeroAttribute(1, 1, 1);
-        equipment = new Item()
+        equipment = new Item("item", 1, Item.Slot.weapon);
     }
 
-    public double heroDamage() {
-
-    }
-    public void levelUp() {
-        this.level += 1;
-    }
+    abstract void levelUp();
 
 }

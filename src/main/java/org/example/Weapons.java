@@ -1,3 +1,5 @@
+package org.example;
+
 public class Weapons {
     enum WeaponType {
         axe,
@@ -12,8 +14,8 @@ public class Weapons {
     private int weaponDamage;
     private WeaponType weaponType;
 
-    public Weapons(WeaponType weaponType, int damage = 0) {
+    public Weapons(WeaponType weaponType, int damage) {
         this.weaponType = weaponType;
-        this.weaponDamage = damage
+        this.weaponDamage = damage;
     }
 }
