@@ -11,6 +11,12 @@ public class Item {
     private int requiredLevel;
     private Slot slot;
 
+    //Constructors
+    public Item() {
+        this.name = "DefaultItem";
+        this.requiredLevel = 1;
+        this.slot = Slot.weapon;
+    }
     public Item(String name, int requiredLevel, Slot slot) {
         this.name = name;
         this.requiredLevel = requiredLevel;

@@ -7,4 +7,8 @@ public class Armor {
         mail,
         plate
     }
+
+    public Armor(ArmorType armorType) {
+
+    }
 }
