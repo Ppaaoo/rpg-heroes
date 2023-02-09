@@ -1,7 +1,7 @@
 package org.example;
 
 public class HeroAttribute {
-    private int strength = 0;
+    private int strength;
     private int dexterity = 0;
     private int intelligence = 0;
     private int armorAttribute = 0;

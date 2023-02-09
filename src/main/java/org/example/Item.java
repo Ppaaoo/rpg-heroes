@@ -24,12 +24,12 @@ public class Item {
     }
 
     //Setters and getters
-    public void setName(String name) {this.name = name;}
-    public String getName() {return name;}
+    public void setItemName(String name) {this.name = name;}
+    public String getItemName() {return name;}
 
-    public void setRequiredLevel(int requiredLevel) {this.requiredLevel = requiredLevel;}
-    public int getRequiredLevel() {return requiredLevel;}
+    public void setItemRequiredLevel(int requiredLevel) {this.requiredLevel = requiredLevel;}
+    public int getItemRequiredLevel() {return requiredLevel;}
 
-    public void setSlot(Slot slot) {this.slot = slot;}
-    public Slot getSlot() {return slot;}
+    public void setItemSlot(Slot slot) {this.slot = slot;}
+    public Slot getItemSlot() {return slot;}
 }
