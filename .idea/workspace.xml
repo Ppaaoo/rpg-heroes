@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="Valid weapon and armor types added to each class" />
+    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="Valid weapon and armor types added to each class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Armor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/HeroAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/HeroAttribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Ranger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Ranger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Rogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Warrior.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,6 +98,9 @@
       <workItem from="1675778563076" duration="2742000" />
       <workItem from="1675868223393" duration="5669000" />
       <workItem from="1675935410296" duration="4388000" />
+      <workItem from="1676014298580" duration="4012000" />
+      <workItem from="1676045259018" duration="931000" />
+      <workItem from="1676273664240" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization of a few classes">
       <created>1675772922387</created>

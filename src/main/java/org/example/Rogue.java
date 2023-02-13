@@ -18,15 +18,15 @@ public class Rogue extends Hero {
         setLevelAttribute(getLevelAttribute().getStrength() + 1, getLevelAttribute().getDexterity() + 4, getLevelAttribute().getIntelligence() + 1);
     }
 
-    @Override
-    void equipArmor() {
+    /*@Override
+    void equipArmor(Armor armor) {
 
     }
 
     @Override
-    void equipWeapon() {
+    void equipWeapon(Weapon weapon) {
 
-    }
+    }*/
 
     @Override
     void doDamage() {

@@ -17,15 +17,15 @@ public class Warrior extends Hero {
         setLevelAttribute(getLevelAttribute().getStrength() + 3, getLevelAttribute().getDexterity() + 2, getLevelAttribute().getIntelligence() + 1);
     }
 
-    @Override
-    void equipArmor() {
+    /*@Override
+    void equipArmor(Armor armor) {
 
     }
 
     @Override
-    void equipWeapon() {
+    void equipWeapon(Weapon weapon) {
 
-    }
+    }*/
 
     @Override
     void doDamage() {

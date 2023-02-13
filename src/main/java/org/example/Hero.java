@@ -10,6 +10,7 @@ public abstract class Hero {
     private Item equipment;
     private Weapon.WeaponType[] validWeaponTypes;
     private Armor.ArmorType[] validArmorTypes;
+    private HashMap<Item.Slot, Item> itemHashMap;
 
     //Constructor
     public Hero(){}
@@ -20,6 +21,13 @@ public abstract class Hero {
         equipment = new Item("item", 1, Item.Slot.weapon);
         this.level = 1;
         this.damage = 1;
+        
+        //Empty initialization of HashMap
+        itemHashMap = new HashMap<Item.Slot, Item>();
+        itemHashMap.put(Item.Slot.weapon, null);
+        itemHashMap.put(Item.Slot.head, null);
+        itemHashMap.put(Item.Slot.body, null);
+        itemHashMap.put(Item.Slot.legs, null);
     }
 
     public void display() {
@@ -91,8 +99,12 @@ public abstract class Hero {
     }
 
     abstract void levelUp();
-    abstract void equipArmor();
-    abstract void equipWeapon();
+    public void equipArmor(Armor armor) {
+
+    }
+    public void equipWeapon(Weapon weapon) {
+
+    }
     abstract void doDamage();
     abstract void totalAttributes();
 }

@@ -4,7 +4,6 @@ public class HeroAttribute {
     private int strength;
     private int dexterity = 0;
     private int intelligence = 0;
-    private int armorAttribute = 0;
 
     public HeroAttribute(int strength, int dexterity, int intelligence) {
         this.strength = strength;
@@ -21,7 +20,4 @@ public class HeroAttribute {
 
     public void setStrength(int strength) {this.strength = strength;}
     public int getStrength() {return strength;}
-
-    public void setArmorAttribute(int armorAttribute) {this.armorAttribute = armorAttribute;}
-    public int getArmorAttribute() {return armorAttribute;}
 }
