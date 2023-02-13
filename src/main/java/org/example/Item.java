@@ -2,10 +2,10 @@ package org.example;
 
 public class Item {
     enum Slot {
-        weapon,
         head,
         body,
-        legs
+        legs,
+        weapon,
     }
     private String name;
     private int requiredLevel;

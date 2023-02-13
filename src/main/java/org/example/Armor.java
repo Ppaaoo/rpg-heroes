@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.HashMap;
-
 public class Armor extends Item{
     enum ArmorType {
         cloth,
@@ -13,8 +11,9 @@ public class Armor extends Item{
     ArmorType armorType;
     HeroAttribute armorAttribute;
 
-    Armor(String name, int requiredLevel, Slot slot) {
+    Armor(String name, int requiredLevel, Slot slot, ArmorType armorType) {
         super(name, requiredLevel, slot);
+        this.armorType = armorType;
     }
 
     public ArmorType getArmorType() {

@@ -7,7 +7,6 @@ public abstract class Hero {
     private int level;
     private int damage;
     private HeroAttribute levelAttribute;
-    private Item equipment;
     private Weapon.WeaponType[] validWeaponTypes;
     private Armor.ArmorType[] validArmorTypes;
     private HashMap<Item.Slot, Item> itemHashMap;
@@ -18,12 +17,11 @@ public abstract class Hero {
         this.name = name;
         this.className = "default";
         levelAttribute = new HeroAttribute(0, 0, 0);
-        equipment = new Item("item", 1, Item.Slot.weapon);
         this.level = 1;
         this.damage = 1;
         
         //Empty initialization of HashMap
-        itemHashMap = new HashMap<Item.Slot, Item>();
+        itemHashMap = new HashMap<>();
         itemHashMap.put(Item.Slot.weapon, null);
         itemHashMap.put(Item.Slot.head, null);
         itemHashMap.put(Item.Slot.body, null);
@@ -38,6 +36,10 @@ public abstract class Hero {
         System.out.println("Damage: " + getDamage());
         for (int i = 0; i < validArmorTypes.length; i++) {
             System.out.println("Armor type " + (i + 1) + ": " + validArmorTypes[i]);
+        }
+        System.out.println("\nItems equipped: ");
+        for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue().getItemName());
         }
     }
 
@@ -57,9 +59,7 @@ public abstract class Hero {
 
     public void setValidArmorTypes(Armor.ArmorType[] armorTypes) {
         this.validArmorTypes = new Armor.ArmorType[armorTypes.length];
-        for (int i = 0; i < validArmorTypes.length; i++) {
-            this.validArmorTypes[i] = armorTypes[i];
-        }
+        System.arraycopy(armorTypes, 0, this.validArmorTypes, 0, validArmorTypes.length);
     }
     public Armor.ArmorType[] getValidArmorTypes() {
         return validArmorTypes;
@@ -67,9 +67,7 @@ public abstract class Hero {
 
     public void setValidWeaponTypes(Weapon.WeaponType[] weaponTypes) {
         this.validWeaponTypes = new Weapon.WeaponType[weaponTypes.length];
-        for (int i = 0; i < validWeaponTypes.length; i++) {
-            this.validWeaponTypes[i] = weaponTypes[i];
-        }
+        System.arraycopy(weaponTypes, 0, this.validWeaponTypes, 0, validWeaponTypes.length);
     }
     public Weapon.WeaponType[] getValidWeaponTypes() {
         return validWeaponTypes;
@@ -100,10 +98,18 @@ public abstract class Hero {
 
     abstract void levelUp();
     public void equipArmor(Armor armor) {
-
+        switch (armor.getItemSlot()) {
+            case weapon -> System.out.println("Not an armor type");
+            case head -> itemHashMap.replace(Item.Slot.head, armor);
+            case body -> itemHashMap.replace(Item.Slot.body, armor);
+            case legs -> itemHashMap.replace(Item.Slot.legs, armor);
+        }
     }
     public void equipWeapon(Weapon weapon) {
-
+        switch (weapon.getItemSlot()) {
+            case weapon -> itemHashMap.replace(Item.Slot.weapon, weapon);
+            case head, legs, body -> System.out.println("Not a weapon type");
+        }
     }
     abstract void doDamage();
     abstract void totalAttributes();
