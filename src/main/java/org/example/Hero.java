@@ -5,7 +5,6 @@ public abstract class Hero {
     private String name;
     private String className;
     private int level;
-    private int damage;
     private HeroAttribute levelAttribute;
     private Weapon.WeaponType[] validWeaponTypes;
     private Armor.ArmorType[] validArmorTypes;
@@ -18,7 +17,6 @@ public abstract class Hero {
         this.className = "default";
         levelAttribute = new HeroAttribute(0, 0, 0);
         this.level = 1;
-        this.damage = 1;
         
         //Empty initialization of HashMap
         itemHashMap = new HashMap<>();
@@ -33,7 +31,8 @@ public abstract class Hero {
         System.out.println("Class: " + getClassName());
         System.out.println("Level: " + getLevel());
         System.out.println("Strength: " + getLevelAttribute().getStrength() + "\nDexterity: " + getLevelAttribute().getDexterity() + "\nIntelligence: " + getLevelAttribute().getIntelligence());
-        System.out.println("Damage: " + getDamage());
+        System.out.println("Damage: " + damage());
+        System.out.println("Total Attributes: " + totalAttributes());
         for (int i = 0; i < validArmorTypes.length; i++) {
             System.out.println("Armor type " + (i + 1) + ": " + validArmorTypes[i]);
         }
@@ -41,13 +40,6 @@ public abstract class Hero {
         for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue().getItemName());
         }
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-    public int getDamage() {
-        return damage;
     }
 
     public void setLevel(int level) {
@@ -97,7 +89,6 @@ public abstract class Hero {
     }
 
     public void levelUp() {
-        System.out.println("This classname in levelup: " + this.className);
         switch (this.className) {
             case "Mage" ->
                     this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 1, this.levelAttribute.getIntelligence() + 5);
@@ -111,16 +102,15 @@ public abstract class Hero {
         this.level += 1;
     }
     public void equipArmor(Armor armor) {
-        boolean isInvalid = false;
+        boolean isInvalid = true;
         for (Armor.ArmorType validArmorType : this.validArmorTypes) {
-            if (validArmorType != armor.getArmorType()) {
-                System.out.println("Invalid armor type");
-                isInvalid = true;
+            if (validArmorType == armor.getArmorType()) {
+                isInvalid = false;
+                //throw error
             }
         }
-        if(this.level <= armor.getItemRequiredLevel()) {
-            System.out.println("Level too low");
-            isInvalid = true;
+        if(this.level >= armor.getItemRequiredLevel()) {
+            //Throw error
         }
         if(!isInvalid) {
             switch (armor.getItemSlot()) {
@@ -137,8 +127,12 @@ public abstract class Hero {
         for (Weapon.WeaponType validWeaponType : this.validWeaponTypes) {
             if (validWeaponType == weapon.getWeaponType()) {
                 isInvalid = false;
+                //Throw error
                 break;
             }
+        }
+        if(this.level >= weapon.getItemRequiredLevel()) {
+            //Throw error
         }
         if(!isInvalid) {
             switch (weapon.getItemSlot()) {
@@ -149,7 +143,43 @@ public abstract class Hero {
         }
     }
     public double damage() {
-        return this.itemHashMap.get(Item.Slot.weapon).getItemRequiredLevel();
+        double finalDamage = 0;
+        switch (this.className) {
+            case "Mage" ->
+                    finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getIntelligence())/100);
+            case "Ranger", "Rogue" ->
+                    finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getDexterity())/100);
+            case "Warrior" ->
+                    finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getStrength())/100);
+        }
+        return finalDamage;
     }
-    abstract void totalAttributes();
+    public double totalAttributes() {
+        double total = 0;
+        switch (this.className) {
+            case "Mage" -> {
+                for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
+                    if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
+                        total += ((Armor)entry.getValue()).getArmorAttribute().getIntelligence();
+                    }
+                }
+            }
+            case "Ranger", "Rogue" -> {
+                for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
+                    if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
+                        total += ((Armor)entry.getValue()).getArmorAttribute().getDexterity();
+                    }
+                }
+            }
+            case "Warrior" -> {
+                for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
+                    if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
+                        total += ((Armor)entry.getValue()).getArmorAttribute().getStrength();
+                    }
+                }
+            }
+        }
+        total += (this.levelAttribute.getStrength() + this.levelAttribute.getDexterity() + this.levelAttribute.getIntelligence());
+        return total;
+    }
 }

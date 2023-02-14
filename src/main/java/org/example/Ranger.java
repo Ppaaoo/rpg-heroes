@@ -11,14 +11,4 @@ public class Ranger extends Hero{
         setValidArmorTypes(armorTypes);
         setValidWeaponTypes(weaponTypes);
     }
-
-    /*@Override
-    void doDamage() {
-
-    }*/
-
-    @Override
-    void totalAttributes() {
-
-    }
 }
