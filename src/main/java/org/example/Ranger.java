@@ -12,10 +12,10 @@ public class Ranger extends Hero{
         setValidWeaponTypes(weaponTypes);
     }
 
-    @Override
+    /*@Override
     void doDamage() {
 
-    }
+    }*/
 
     @Override
     void totalAttributes() {

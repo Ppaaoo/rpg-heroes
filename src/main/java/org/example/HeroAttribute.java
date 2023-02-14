@@ -2,8 +2,8 @@ package org.example;
 
 public class HeroAttribute {
     private int strength;
-    private int dexterity = 0;
-    private int intelligence = 0;
+    private int dexterity;
+    private int intelligence;
 
     public HeroAttribute(int strength, int dexterity, int intelligence) {
         this.strength = strength;

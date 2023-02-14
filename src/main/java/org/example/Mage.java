@@ -11,10 +11,10 @@ public class Mage extends Hero {
         setValidArmorTypes(armorTypes);
         setValidWeaponTypes(weaponTypes);
     }
-    @Override
+    /*@Override
     void doDamage() {
 
-    }
+    }*/
     @Override
     void totalAttributes() {
 

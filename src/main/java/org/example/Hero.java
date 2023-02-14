@@ -97,27 +97,59 @@ public abstract class Hero {
     }
 
     public void levelUp() {
+        System.out.println("This classname in levelup: " + this.className);
         switch (this.className) {
-            case "Mage": this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 1, this.levelAttribute.getIntelligence() + 5);
-            case "Ranger": this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 5, this.levelAttribute.getIntelligence() + 1);
-            case "Rogue": this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 4, this.levelAttribute.getIntelligence() + 1);
-            case "Warrior": this.setLevelAttribute(this.levelAttribute.getStrength() + 3, this.levelAttribute.getDexterity() + 2, this.levelAttribute.getIntelligence() + 1);
+            case "Mage" ->
+                    this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 1, this.levelAttribute.getIntelligence() + 5);
+            case "Ranger" ->
+                    this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 5, this.levelAttribute.getIntelligence() + 1);
+            case "Rogue" ->
+                    this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 4, this.levelAttribute.getIntelligence() + 1);
+            case "Warrior" ->
+                    this.setLevelAttribute(this.levelAttribute.getStrength() + 3, this.levelAttribute.getDexterity() + 2, this.levelAttribute.getIntelligence() + 1);
         }
+        this.level += 1;
     }
     public void equipArmor(Armor armor) {
-        switch (armor.getItemSlot()) {
-            case weapon -> System.out.println("Not an armor type");
-            case head -> itemHashMap.replace(Item.Slot.head, armor);
-            case body -> itemHashMap.replace(Item.Slot.body, armor);
-            case legs -> itemHashMap.replace(Item.Slot.legs, armor);
+        boolean isInvalid = false;
+        for (Armor.ArmorType validArmorType : this.validArmorTypes) {
+            if (validArmorType != armor.getArmorType()) {
+                System.out.println("Invalid armor type");
+                isInvalid = true;
+            }
+        }
+        if(this.level <= armor.getItemRequiredLevel()) {
+            System.out.println("Level too low");
+            isInvalid = true;
+        }
+        if(!isInvalid) {
+            switch (armor.getItemSlot()) {
+                case weapon -> System.out.println("Not an armor type");
+                case head -> itemHashMap.replace(Item.Slot.head, armor);
+                case body -> itemHashMap.replace(Item.Slot.body, armor);
+                case legs -> itemHashMap.replace(Item.Slot.legs, armor);
+                default -> System.out.println("Unable to equip armor");
+            }
         }
     }
     public void equipWeapon(Weapon weapon) {
-        switch (weapon.getItemSlot()) {
-            case weapon -> itemHashMap.replace(Item.Slot.weapon, weapon);
-            case head, legs, body -> System.out.println("Not a weapon type");
+        boolean isInvalid = true;
+        for (Weapon.WeaponType validWeaponType : this.validWeaponTypes) {
+            if (validWeaponType == weapon.getWeaponType()) {
+                isInvalid = false;
+                break;
+            }
+        }
+        if(!isInvalid) {
+            switch (weapon.getItemSlot()) {
+                case weapon -> itemHashMap.replace(Item.Slot.weapon, weapon);
+                case head, legs, body -> System.out.println("Not a weapon type");
+                default -> System.out.println("Unable to equip weapon");
+            }
         }
     }
-    abstract void doDamage();
+    public double damage() {
+        return this.itemHashMap.get(Item.Slot.weapon).getItemRequiredLevel();
+    }
     abstract void totalAttributes();
 }
