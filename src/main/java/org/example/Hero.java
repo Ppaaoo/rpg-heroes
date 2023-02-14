@@ -1,4 +1,7 @@
 package org.example;
+import exceptions.InvalidArmorException;
+import exceptions.InvalidWeaponException;
+
 import java.util.*;
 
 public abstract class Hero {
@@ -101,16 +104,17 @@ public abstract class Hero {
         }
         this.level += 1;
     }
-    public void equipArmor(Armor armor) {
+    public void equipArmor(Armor armor) throws InvalidArmorException {
         boolean isInvalid = true;
         for (Armor.ArmorType validArmorType : this.validArmorTypes) {
             if (validArmorType == armor.getArmorType()) {
                 isInvalid = false;
                 //throw error
+                break;
             }
         }
-        if(this.level >= armor.getItemRequiredLevel()) {
-            //Throw error
+        if(this.level <= armor.getItemRequiredLevel()) {
+            throw new InvalidArmorException("equipArmor: Hero level too low");
         }
         if(!isInvalid) {
             switch (armor.getItemSlot()) {
@@ -122,17 +126,18 @@ public abstract class Hero {
             }
         }
     }
-    public void equipWeapon(Weapon weapon) {
+    public void equipWeapon(Weapon weapon) throws InvalidWeaponException {
         boolean isInvalid = true;
         for (Weapon.WeaponType validWeaponType : this.validWeaponTypes) {
             if (validWeaponType == weapon.getWeaponType()) {
                 isInvalid = false;
-                //Throw error
-                break;
+            } else {
+                throw new InvalidWeaponException("equipWeapon: Invalid weapon type");
             }
         }
         if(this.level >= weapon.getItemRequiredLevel()) {
-            //Throw error
+            isInvalid = false;
+            throw new InvalidWeaponException("equipWeapon: Hero level too low");
         }
         if(!isInvalid) {
             switch (weapon.getItemSlot()) {

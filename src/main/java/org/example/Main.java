@@ -1,5 +1,8 @@
 package org.example;
 
+import exceptions.InvalidArmorException;
+import exceptions.InvalidWeaponException;
+
 public class Main {
     public static void main(String[] args) {
         Mage testMage = new Mage("Judy");
@@ -8,10 +11,26 @@ public class Main {
         Armor testShirt = new Armor("Basic shirt", 1, Item.Slot.body, Armor.ArmorType.cloth,0,0,1);
         Weapon testWeapon = new Weapon("Basic wand", 1, Item.Slot.weapon, Weapon.WeaponType.wand, 1);
         testMage.levelUp();
-        testMage.equipArmor(testShorts);
-        testMage.equipArmor(testHat);
-        testMage.equipArmor(testShirt);
-        testMage.equipWeapon(testWeapon);
+        try {
+            testMage.equipArmor(testShorts);
+        } catch (InvalidArmorException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            testMage.equipArmor(testHat);
+        } catch (InvalidArmorException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            testMage.equipArmor(testShirt);
+        } catch (InvalidArmorException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            testMage.equipWeapon(testWeapon);
+        } catch (InvalidWeaponException e) {
+            throw new RuntimeException(e);
+        }
         testMage.display();
     }
 }
