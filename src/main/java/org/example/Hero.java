@@ -96,7 +96,14 @@ public abstract class Hero {
         return className;
     }
 
-    abstract void levelUp();
+    public void levelUp() {
+        switch (this.className) {
+            case "Mage": this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 1, this.levelAttribute.getIntelligence() + 5);
+            case "Ranger": this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 5, this.levelAttribute.getIntelligence() + 1);
+            case "Rogue": this.setLevelAttribute(this.levelAttribute.getStrength() + 1, this.levelAttribute.getDexterity() + 4, this.levelAttribute.getIntelligence() + 1);
+            case "Warrior": this.setLevelAttribute(this.levelAttribute.getStrength() + 3, this.levelAttribute.getDexterity() + 2, this.levelAttribute.getIntelligence() + 1);
+        }
+    }
     public void equipArmor(Armor armor) {
         switch (armor.getItemSlot()) {
             case weapon -> System.out.println("Not an armor type");

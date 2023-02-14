@@ -12,21 +12,6 @@ public class Rogue extends Hero {
         setValidArmorTypes(armorTypes);
         setValidWeaponTypes(weaponTypes);
     }
-    @Override
-    void levelUp() {
-        setLevel(getLevel() + 1);
-        setLevelAttribute(getLevelAttribute().getStrength() + 1, getLevelAttribute().getDexterity() + 4, getLevelAttribute().getIntelligence() + 1);
-    }
-
-    /*@Override
-    void equipArmor(Armor armor) {
-
-    }
-
-    @Override
-    void equipWeapon(Weapon weapon) {
-
-    }*/
 
     @Override
     void doDamage() {

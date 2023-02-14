@@ -11,21 +11,6 @@ public class Warrior extends Hero {
         setValidArmorTypes(armorTypes);
         setValidWeaponTypes(weaponTypes);
     }
-    @Override
-    void levelUp() {
-        setLevel(getLevel() + 1);
-        setLevelAttribute(getLevelAttribute().getStrength() + 3, getLevelAttribute().getDexterity() + 2, getLevelAttribute().getIntelligence() + 1);
-    }
-
-    /*@Override
-    void equipArmor(Armor armor) {
-
-    }
-
-    @Override
-    void equipWeapon(Weapon weapon) {
-
-    }*/
 
     @Override
     void doDamage() {
