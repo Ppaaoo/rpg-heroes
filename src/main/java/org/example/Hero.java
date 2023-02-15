@@ -35,7 +35,11 @@ public abstract class Hero {
         System.out.println("Level: " + getLevel());
         System.out.println("Strength: " + getLevelAttribute().getStrength() + "\nDexterity: " + getLevelAttribute().getDexterity() + "\nIntelligence: " + getLevelAttribute().getIntelligence());
         System.out.println("Damage: " + damage());
-        System.out.println("Total Attributes: " + totalAttributes());
+        levelAttribute = totalAttributes();
+        System.out.println("Total strength: "  + levelAttribute.getStrength());
+        System.out.println("Total dexterity: "  + levelAttribute.getDexterity());
+        System.out.println("Total intelligence: " + levelAttribute.getIntelligence());
+
         for (int i = 0; i < validArmorTypes.length; i++) {
             System.out.println("Armor type " + (i + 1) + ": " + validArmorTypes[i]);
         }
@@ -105,46 +109,75 @@ public abstract class Hero {
         this.level += 1;
     }
     public void equipArmor(Armor armor) throws InvalidArmorException {
-        boolean isInvalid = true;
-        for (Armor.ArmorType validArmorType : this.validArmorTypes) {
-            if (validArmorType == armor.getArmorType()) {
-                isInvalid = false;
-                //throw error
-                break;
+        switch (armor.getArmorType()) {
+            case cloth -> {
+                if (!this.className.equals("Mage")) {
+                    throw new InvalidArmorException("equipArmor: This armor cannot be equipped by this hero");
+                }
+            }
+            case leather -> {
+                if (!this.className.equals("Ranger") || !this.className.equals("Rogue")) {
+                    throw new InvalidArmorException("equipArmor: This armor cannot be equipped by this hero");
+                }
+            }
+            case mail ->  {
+                if (!this.className.equals("Ranger") || !this.className.equals("Rogue") || !this.className.equals("Warrior")) {
+                    throw new InvalidArmorException("equipArmor: This armor cannot be equipped by this hero");
+                }
+            }
+            case plate -> {
+                if (!this.className.equals("Warrior")) {
+                    throw new InvalidArmorException("equipArmor: This armor cannot be equipped by this hero");
+                }
             }
         }
+
         if(this.level <= armor.getItemRequiredLevel()) {
             throw new InvalidArmorException("equipArmor: Hero level too low");
         }
-        if(!isInvalid) {
-            switch (armor.getItemSlot()) {
-                case weapon -> System.out.println("Not an armor type");
-                case head -> itemHashMap.replace(Item.Slot.head, armor);
-                case body -> itemHashMap.replace(Item.Slot.body, armor);
-                case legs -> itemHashMap.replace(Item.Slot.legs, armor);
-                default -> System.out.println("Unable to equip armor");
-            }
+        switch (armor.getItemSlot()) {
+            case weapon -> throw new InvalidArmorException("equipArmor: Invalid slot type");
+            case head -> itemHashMap.replace(Item.Slot.head, armor);
+            case body -> itemHashMap.replace(Item.Slot.body, armor);
+            case legs -> itemHashMap.replace(Item.Slot.legs, armor);
+            default -> System.out.println("Unable to equip armor");
         }
     }
     public void equipWeapon(Weapon weapon) throws InvalidWeaponException {
-        boolean isInvalid = true;
-        for (Weapon.WeaponType validWeaponType : this.validWeaponTypes) {
-            if (validWeaponType == weapon.getWeaponType()) {
-                isInvalid = false;
-            } else {
-                throw new InvalidWeaponException("equipWeapon: Invalid weapon type");
+        switch (weapon.getWeaponType()) {
+            case staff, wand -> {
+                if (!this.className.equals("Mage")) {
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Mage");
+                }
+            }
+            case bow -> {
+                if (!this.className.equals("Ranger")) {
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Ranger");
+                }
+            }
+            case dagger -> {
+                if (!this.className.equals("Rogue")) {
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Rogue");
+                }
+            }
+            case sword -> {
+                if (!this.className.equals("Rogue") || !this.className.equals("Warrior")) {
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Rogue or Warrior");
+                }
+            }
+            case axe, hammer -> {
+                if (!this.className.equals("Warrior")) {
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Warrior");
+                }
             }
         }
-        if(this.level >= weapon.getItemRequiredLevel()) {
-            isInvalid = false;
+        if(this.level <= weapon.getItemRequiredLevel()) {
             throw new InvalidWeaponException("equipWeapon: Hero level too low");
         }
-        if(!isInvalid) {
-            switch (weapon.getItemSlot()) {
-                case weapon -> itemHashMap.replace(Item.Slot.weapon, weapon);
-                case head, legs, body -> System.out.println("Not a weapon type");
-                default -> System.out.println("Unable to equip weapon");
-            }
+        switch (weapon.getItemSlot()) {
+            case weapon -> itemHashMap.replace(Item.Slot.weapon, weapon);
+            case head, legs, body -> throw new InvalidWeaponException("equipWeapon: Invalid slot type");
+            default -> System.out.println("Unable to equip weapon");
         }
     }
     public double damage() {
@@ -159,32 +192,14 @@ public abstract class Hero {
         }
         return finalDamage;
     }
-    public double totalAttributes() {
-        double total = 0;
-        switch (this.className) {
-            case "Mage" -> {
-                for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
-                    if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
-                        total += ((Armor)entry.getValue()).getArmorAttribute().getIntelligence();
-                    }
-                }
-            }
-            case "Ranger", "Rogue" -> {
-                for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
-                    if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
-                        total += ((Armor)entry.getValue()).getArmorAttribute().getDexterity();
-                    }
-                }
-            }
-            case "Warrior" -> {
-                for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
-                    if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
-                        total += ((Armor)entry.getValue()).getArmorAttribute().getStrength();
-                    }
-                }
+    public HeroAttribute totalAttributes() {
+        for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
+            if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
+                this.levelAttribute.setStrength(this.levelAttribute.getStrength() + ((Armor)entry.getValue()).getArmorAttribute().getStrength());
+                this.levelAttribute.setDexterity(this.levelAttribute.getDexterity() + ((Armor)entry.getValue()).getArmorAttribute().getDexterity());
+                this.levelAttribute.setIntelligence(this.levelAttribute.getIntelligence() + ((Armor)entry.getValue()).getArmorAttribute().getIntelligence());
             }
         }
-        total += (this.levelAttribute.getStrength() + this.levelAttribute.getDexterity() + this.levelAttribute.getIntelligence());
-        return total;
+        return this.levelAttribute;
     }
 }
