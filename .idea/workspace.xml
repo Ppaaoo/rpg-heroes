@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="Making levelUp function non-abstract">
-      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/InvalidArmorException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/InvalidWeaponException.java" afterDir="false" />
+    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="Exception handling classes added, all functionality not implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Hero$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Hero$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Hero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +97,8 @@
       <workItem from="1676273664240" duration="14000" />
       <workItem from="1676304888754" duration="4003000" />
       <workItem from="1676360225084" duration="8751000" />
-      <workItem from="1676385963271" duration="1229000" />
+      <workItem from="1676385963271" duration="1274000" />
+      <workItem from="1676445656811" duration="35000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization of a few classes">
       <created>1675772922387</created>
@@ -155,7 +151,13 @@
       <option name="project" value="LOCAL" />
       <updated>1676365179896</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="Exception handling classes added, all functionality not implemented">
+      <created>1676388903354</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1676388903354</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +174,7 @@
     <MESSAGE value="Armor and weapon now equippable, but no checks implemented" />
     <MESSAGE value="Code cleanup" />
     <MESSAGE value="Making levelUp function non-abstract" />
-    <option name="LAST_COMMIT_MESSAGE" value="Making levelUp function non-abstract" />
+    <MESSAGE value="Exception handling classes added, all functionality not implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exception handling classes added, all functionality not implemented" />
   </component>
 </project>
