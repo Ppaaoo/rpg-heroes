@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="Exception handling classes added, all functionality not implemented">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Test/org/example/HeroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Test/org/example/HeroTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" afterDir="false" />
-    </list>
+    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="More tests implemented" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +198,7 @@
       <workItem from="1676445656811" duration="35000" />
       <workItem from="1676471298762" duration="6687000" />
       <workItem from="1676541228274" duration="862000" />
-      <workItem from="1676569834193" duration="4476000" />
+      <workItem from="1676569834193" duration="4775000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization of a few classes">
       <created>1675772922387</created>
@@ -261,7 +257,13 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1676388903354</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL−00010" summary="More tests implemented">
+      <created>1676577201988</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1676577201988</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +281,7 @@
     <MESSAGE value="Code cleanup" />
     <MESSAGE value="Making levelUp function non-abstract" />
     <MESSAGE value="Exception handling classes added, all functionality not implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exception handling classes added, all functionality not implemented" />
+    <MESSAGE value="More tests implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="More tests implemented" />
   </component>
 </project>
