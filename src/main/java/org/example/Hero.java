@@ -116,12 +116,12 @@ public abstract class Hero {
                 }
             }
             case leather -> {
-                if (!this.className.equals("Ranger") || !this.className.equals("Rogue")) {
+                if (!this.className.equals("Ranger") && !this.className.equals("Rogue")) {
                     throw new InvalidArmorException("equipArmor: This armor cannot be equipped by this hero");
                 }
             }
             case mail ->  {
-                if (!this.className.equals("Ranger") || !this.className.equals("Rogue") || !this.className.equals("Warrior")) {
+                if (!this.className.equals("Ranger") && !this.className.equals("Rogue") && !this.className.equals("Warrior")) {
                     throw new InvalidArmorException("equipArmor: This armor cannot be equipped by this hero");
                 }
             }
@@ -131,8 +131,7 @@ public abstract class Hero {
                 }
             }
         }
-
-        if(this.level <= armor.getItemRequiredLevel()) {
+        if(this.level < armor.getItemRequiredLevel()) {
             throw new InvalidArmorException("equipArmor: Hero level too low");
         }
         switch (armor.getItemSlot()) {
@@ -147,22 +146,22 @@ public abstract class Hero {
         switch (weapon.getWeaponType()) {
             case staff, wand -> {
                 if (!this.className.equals("Mage")) {
-                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Mage");
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by this hero");
                 }
             }
             case bow -> {
                 if (!this.className.equals("Ranger")) {
-                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Ranger");
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by this hero");
                 }
             }
             case dagger -> {
                 if (!this.className.equals("Rogue")) {
-                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Rogue");
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by this hero");
                 }
             }
             case sword -> {
-                if (!this.className.equals("Rogue") || !this.className.equals("Warrior")) {
-                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by a Rogue or Warrior");
+                if (!this.className.equals("Rogue") && !this.className.equals("Warrior")) {
+                    throw new InvalidWeaponException("equipWeapon: This weapon cannot be equipped by this hero");
                 }
             }
             case axe, hammer -> {
@@ -171,7 +170,7 @@ public abstract class Hero {
                 }
             }
         }
-        if(this.level <= weapon.getItemRequiredLevel()) {
+        if(this.level < weapon.getItemRequiredLevel()) {
             throw new InvalidWeaponException("equipWeapon: Hero level too low");
         }
         switch (weapon.getItemSlot()) {
@@ -182,22 +181,30 @@ public abstract class Hero {
     }
     public double damage() {
         double finalDamage = 0;
-        switch (this.className) {
-            case "Mage" ->
-                    finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getIntelligence())/100);
-            case "Ranger", "Rogue" ->
-                    finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getDexterity())/100);
-            case "Warrior" ->
-                    finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getStrength())/100);
+        if(this.itemHashMap.get(Item.Slot.weapon) == null) {
+            finalDamage = 1;
+        } else {
+            switch (this.className) {
+                case "Mage" ->
+                        finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getIntelligence())/100);
+                case "Ranger", "Rogue" ->
+                        finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getDexterity())/100);
+                case "Warrior" ->
+                        finalDamage = ((Weapon)this.itemHashMap.get(Item.Slot.weapon)).getWeaponDamage() * (1 + ((double)this.levelAttribute.getStrength())/100);
+            }
         }
+        int temp = (int)(finalDamage*100.0);
+        finalDamage = ((double)temp)/100.0;
         return finalDamage;
     }
     public HeroAttribute totalAttributes() {
         for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
-            if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
-                this.levelAttribute.setStrength(this.levelAttribute.getStrength() + ((Armor)entry.getValue()).getArmorAttribute().getStrength());
-                this.levelAttribute.setDexterity(this.levelAttribute.getDexterity() + ((Armor)entry.getValue()).getArmorAttribute().getDexterity());
-                this.levelAttribute.setIntelligence(this.levelAttribute.getIntelligence() + ((Armor)entry.getValue()).getArmorAttribute().getIntelligence());
+            if(entry.getValue() != null) {
+                if(entry.getValue().getItemSlot() != Item.Slot.weapon) {
+                    this.levelAttribute.setStrength(this.levelAttribute.getStrength() + ((Armor)entry.getValue()).getArmorAttribute().getStrength());
+                    this.levelAttribute.setDexterity(this.levelAttribute.getDexterity() + ((Armor)entry.getValue()).getArmorAttribute().getDexterity());
+                    this.levelAttribute.setIntelligence(this.levelAttribute.getIntelligence() + ((Armor)entry.getValue()).getArmorAttribute().getIntelligence());
+                }
             }
         }
         return this.levelAttribute;

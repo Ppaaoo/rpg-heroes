@@ -1,5 +1,7 @@
 package org.example;
 
+import exceptions.InvalidArmorException;
+import exceptions.InvalidWeaponException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,37 +49,70 @@ class HeroTest {
     }
     @Test
     void testHeroTotalAttributesNoArmor() {
-
+        testWarrior.totalAttributes();
+        assertEquals(5, testWarrior.totalAttributes().getStrength());
+        assertEquals(2, testWarrior.totalAttributes().getDexterity());
+        assertEquals(1, testWarrior.totalAttributes().getIntelligence());
     }
     @Test
-    void testHeroTotalAttributesOneArmor() {
-
+    void testHeroTotalAttributesOneArmor() throws InvalidArmorException {
+        Armor testArmor = new Armor("Leggings of the walking mountain", 1, Item.Slot.legs, Armor.ArmorType.plate, 1,3,1);
+        testWarrior.equipArmor(testArmor);
+        testWarrior.totalAttributes();
+        assertEquals(6, testWarrior.getLevelAttribute().getStrength());
+        assertEquals(2, testWarrior.getLevelAttribute().getIntelligence());
+        assertEquals(5, testWarrior.getLevelAttribute().getDexterity());
     }
     @Test
-    void testHeroTotalAttributesTwoArmor() {
-
+    void testHeroTotalAttributesTwoArmor() throws InvalidArmorException {
+        Armor testArmor = new Armor("Leggings of the walking mountain", 1, Item.Slot.legs, Armor.ArmorType.plate, 2,3,0);
+        Armor testArmorTwo = new Armor("Breast plate of the lonely tiger", 1, Item.Slot.body, Armor.ArmorType.plate, 5,0,1);
+        testWarrior.equipArmor(testArmor);
+        testWarrior.equipArmor(testArmorTwo);
+        testWarrior.totalAttributes();
+        assertEquals(12, testWarrior.getLevelAttribute().getStrength());
+        assertEquals(5, testWarrior.getLevelAttribute().getDexterity());
+        assertEquals(2, testWarrior.getLevelAttribute().getIntelligence());
     }
     @Test
-    void testHeroTotalAttributesReplaceArmor() {
-
+    void testHeroTotalAttributesReplaceArmor() throws InvalidArmorException {
+        Armor testArmor = new Armor("Leggings of the walking mountain", 1, Item.Slot.legs, Armor.ArmorType.plate, 2,3,0);
+        Armor testArmorTwo = new Armor("Leggings of the lonely tiger", 1, Item.Slot.legs, Armor.ArmorType.plate, 5,0,1);
+        testWarrior.equipArmor(testArmor);
+        testWarrior.equipArmor(testArmorTwo);
+        testWarrior.totalAttributes();
+        assertEquals(10, testWarrior.getLevelAttribute().getStrength());
+        assertEquals(2, testWarrior.getLevelAttribute().getDexterity());
+        assertEquals(2, testWarrior.getLevelAttribute().getIntelligence());
     }
     //Test too high level and wrong type
     @Test
     void testHeroDamageNoWeaponEquipped() {
-
+        assertEquals(1, testWarrior.damage());
     }
     @Test
-    void testHeroDamageOneWeaponEquipped() {
-
+    void testHeroDamageOneWeaponEquipped() throws InvalidWeaponException {
+        Weapon testWeapon = new Weapon("Sword of the rising sun", 1, Item.Slot.weapon, Weapon.WeaponType.sword, 10);
+        testWarrior.equipWeapon(testWeapon);
+        assertEquals(10.5, testWarrior.damage());
     }
     @Test
-    void testHeroDamageReplaceWeaponEquipped() {
-
+    void testHeroDamageReplaceWeaponEquipped() throws InvalidWeaponException {
+        Weapon testWeapon = new Weapon("Sword of the rising sun", 1, Item.Slot.weapon, Weapon.WeaponType.sword, 10);
+        Weapon testWeaponTwo = new Weapon("Axe of the rising sun", 1, Item.Slot.weapon, Weapon.WeaponType.axe, 20);
+        testWarrior.equipWeapon(testWeapon);
+        testWarrior.equipWeapon(testWeaponTwo);
+        assertEquals(21, testWarrior.damage());
     }
     //Test too high level and wrong type
     @Test
-    void testHeroDamageArmorAndWeaponEquipped() {
-
+    void testHeroDamageArmorAndWeaponEquipped() throws InvalidWeaponException, InvalidArmorException {
+        Weapon testWeapon = new Weapon("Sword of the rising sun", 1, Item.Slot.weapon, Weapon.WeaponType.sword, 10);
+        Armor testArmor = new Armor("Leggings of the walking mountain", 1, Item.Slot.legs, Armor.ArmorType.plate, 2,3,0);
+        testWarrior.equipWeapon(testWeapon);
+        testWarrior.equipArmor(testArmor);
+        testWarrior.totalAttributes();
+        assertEquals( 10.7, testWarrior.damage());
     }
     @Test
     void testHeroDisplay() {

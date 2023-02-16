@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="Exception handling classes added, all functionality not implemented">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Test/org/example/HeroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Test/org/example/HeroTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,8 +89,8 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HeroTest.testCreateArmor">
-    <configuration name="HeroTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.HeroTest.testHeroDamageArmorAndWeaponEquipped">
+    <configuration name="HeroTest.testHeroDamageArmorAndWeaponEquipped" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rpg-heroes" />
       <extension name="coverage">
         <pattern>
@@ -98,12 +100,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
       <option name="MAIN_CLASS_NAME" value="org.example.HeroTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testHeroDamageArmorAndWeaponEquipped" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HeroTest.testCreateArmor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HeroTest.testHeroDamageNoWeaponEquipped" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rpg-heroes" />
       <extension name="coverage">
         <pattern>
@@ -113,7 +116,55 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
       <option name="MAIN_CLASS_NAME" value="org.example.HeroTest" />
-      <option name="METHOD_NAME" value="testCreateArmor" />
+      <option name="METHOD_NAME" value="testHeroDamageNoWeaponEquipped" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HeroTest.testHeroDamageReplaceWeaponEquipped" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rpg-heroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.HeroTest" />
+      <option name="METHOD_NAME" value="testHeroDamageReplaceWeaponEquipped" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HeroTest.testHeroTotalAttributesReplaceArmor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rpg-heroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.HeroTest" />
+      <option name="METHOD_NAME" value="testHeroTotalAttributesReplaceArmor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HeroTest.testHeroTotalAttributesTwoArmor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rpg-heroes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.HeroTest" />
+      <option name="METHOD_NAME" value="testHeroTotalAttributesTwoArmor" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -121,8 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HeroTest.testCreateArmor" />
-        <item itemvalue="JUnit.HeroTest" />
+        <item itemvalue="JUnit.HeroTest.testHeroDamageArmorAndWeaponEquipped" />
+        <item itemvalue="JUnit.HeroTest.testHeroDamageReplaceWeaponEquipped" />
+        <item itemvalue="JUnit.HeroTest.testHeroDamageNoWeaponEquipped" />
+        <item itemvalue="JUnit.HeroTest.testHeroTotalAttributesReplaceArmor" />
+        <item itemvalue="JUnit.HeroTest.testHeroTotalAttributesTwoArmor" />
       </list>
     </recent_temporary>
   </component>
@@ -148,6 +202,7 @@
       <workItem from="1676445656811" duration="35000" />
       <workItem from="1676471298762" duration="6687000" />
       <workItem from="1676541228274" duration="862000" />
+      <workItem from="1676569834193" duration="4476000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization of a few classes">
       <created>1675772922387</created>
