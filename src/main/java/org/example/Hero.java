@@ -13,7 +13,7 @@ public abstract class Hero {
     private Armor.ArmorType[] validArmorTypes;
     private HashMap<Item.Slot, Item> itemHashMap;
 
-    //Constructor
+    //Constructors
     public Hero(){}
     public Hero(String name) {
         this.name = name;
@@ -29,24 +29,17 @@ public abstract class Hero {
         itemHashMap.put(Item.Slot.legs, null);
     }
 
-    public void display() {
-        System.out.println("Name: " + getName());
-        System.out.println("Class: " + getClassName());
-        System.out.println("Level: " + getLevel());
-        System.out.println("Strength: " + getLevelAttribute().getStrength() + "\nDexterity: " + getLevelAttribute().getDexterity() + "\nIntelligence: " + getLevelAttribute().getIntelligence());
-        System.out.println("Damage: " + damage());
+    public StringBuilder display() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Name: ").append(getName()).append("\n");
+        stringBuilder.append("Class: ").append(getClassName()).append("\n");
+        stringBuilder.append("Level: ").append(getLevel()).append("\n");
         levelAttribute = totalAttributes();
-        System.out.println("Total strength: "  + levelAttribute.getStrength());
-        System.out.println("Total dexterity: "  + levelAttribute.getDexterity());
-        System.out.println("Total intelligence: " + levelAttribute.getIntelligence());
-
-        for (int i = 0; i < validArmorTypes.length; i++) {
-            System.out.println("Armor type " + (i + 1) + ": " + validArmorTypes[i]);
-        }
-        System.out.println("\nItems equipped: ");
-        for (Map.Entry<Item.Slot, Item> entry : itemHashMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue().getItemName());
-        }
+        stringBuilder.append("Total strength: ").append(levelAttribute.getStrength()).append("\n");
+        stringBuilder.append("Total dexterity: ").append(levelAttribute.getDexterity()).append("\n");
+        stringBuilder.append("Total intelligence: ").append(levelAttribute.getIntelligence()).append("\n");
+        stringBuilder.append("Damage: ").append(damage());
+        return stringBuilder;
     }
 
     public void setLevel(int level) {

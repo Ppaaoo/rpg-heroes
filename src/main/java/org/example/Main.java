@@ -31,6 +31,6 @@ public class Main {
         } catch (InvalidWeaponException e) {
             throw new RuntimeException(e);
         }
-        testMage.display();
+        System.out.println(testMage.display());
     }
 }

@@ -85,7 +85,24 @@ class HeroTest {
         assertEquals(2, testWarrior.getLevelAttribute().getDexterity());
         assertEquals(2, testWarrior.getLevelAttribute().getIntelligence());
     }
-    //Test too high level and wrong type
+    @Test
+    void testArmorRequiredLevelTooHigh() {
+        String expected = "equipArmor: Hero level too low";
+        Armor testArmor = new Armor("Leggings of the walking mountain", 5, Item.Slot.legs, Armor.ArmorType.plate, 2,3,0);
+        InvalidArmorException exception =
+                assertThrows(InvalidArmorException.class, () -> testWarrior.equipArmor(testArmor));
+        assertEquals(exception.getMessage(), expected);
+    }
+
+    @Test
+    void testInvalidArmorType() {
+        String expected = "equipArmor: This armor cannot be equipped by this hero";
+        Armor testArmor = new Armor("Leggings of the walking mountain", 1, Item.Slot.legs, Armor.ArmorType.cloth, 2,3,0);
+        InvalidArmorException exception =
+                assertThrows(InvalidArmorException.class, () -> testWarrior.equipArmor(testArmor));
+        assertEquals(exception.getMessage(), expected);
+    }
+
     @Test
     void testHeroDamageNoWeaponEquipped() {
         assertEquals(1, testWarrior.damage());
@@ -115,7 +132,32 @@ class HeroTest {
         assertEquals( 10.7, testWarrior.damage());
     }
     @Test
-    void testHeroDisplay() {
+    void testWeaponRequiredLevelTooHigh() {
+        String expected = "equipWeapon: Hero level too low";
+        Weapon testWeapon = new Weapon("Sword of the rising sun", 5, Item.Slot.weapon, Weapon.WeaponType.sword, 10);
+        InvalidWeaponException exception =
+            assertThrows(InvalidWeaponException.class, () -> testWarrior.equipWeapon(testWeapon));
+        assertEquals(exception.getMessage(), expected);
+    }
 
+    @Test
+    void testInvalidWeaponType() {
+        String expected = "equipWeapon: This weapon cannot be equipped by this hero";
+        Weapon testWeapon = new Weapon("Sword of the rising sun", 5, Item.Slot.weapon, Weapon.WeaponType.dagger, 10);
+        InvalidWeaponException exception =
+            assertThrows(InvalidWeaponException.class, () -> testWarrior.equipWeapon(testWeapon));
+        assertEquals(exception.getMessage(), expected);
+    }
+    @Test
+    void testHeroDisplay() {
+        String exception = """
+                Name: Steve
+                Class: Warrior
+                Level: 1
+                Total strength: 5
+                Total dexterity: 2
+                Total intelligence: 1
+                Damage: 1.0""";
+        assertEquals(exception, testWarrior.display().toString());
     }
 }
