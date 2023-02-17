@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="All test implemented and passed">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
+    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="pom.xml updated">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +269,19 @@
       <option name="project" value="LOCAL" />
       <updated>1676625534234</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL−00012" summary="maven.yml updated">
+      <created>1676649584086</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1676649584086</updated>
+    </task>
+    <task id="LOCAL−00013" summary="pom.xml updated">
+      <created>1676649741652</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1676649741652</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +301,8 @@
     <MESSAGE value="Exception handling classes added, all functionality not implemented" />
     <MESSAGE value="More tests implemented" />
     <MESSAGE value="All test implemented and passed" />
-    <option name="LAST_COMMIT_MESSAGE" value="All test implemented and passed" />
+    <MESSAGE value="maven.yml updated" />
+    <MESSAGE value="pom.xml updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="pom.xml updated" />
   </component>
 </project>
