@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="All test implemented and passed">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpg-heroes.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Test/org/example/HeroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Test/org/example/HeroTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Hero$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Hero$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Hero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/HeroTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/HeroTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="75ae12be-31bb-4241-baa9-295b4918ebc7" name="Changes" comment="All test implemented and passed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,7 +195,7 @@
       <workItem from="1676471298762" duration="6687000" />
       <workItem from="1676541228274" duration="862000" />
       <workItem from="1676569834193" duration="4775000" />
-      <workItem from="1676617382387" duration="4819000" />
+      <workItem from="1676617382387" duration="4928000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization of a few classes">
       <created>1675772922387</created>
@@ -271,7 +260,14 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1676577201988</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="All test implemented and passed">
+      <created>1676625534234</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676625534234</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
